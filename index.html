@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>車主雜誌</title>
+    <link rel="stylesheet" href="autodriverStyle.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="alertifyjs/css/alertify.min.css" />
+    <link rel="stylesheet" href="alertifyjs/css/themes/default.min.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.blockUI/2.70/jquery.blockUI.min.js"></script>
+    <script>
+        var ip = 'gift.autodriver.com.tw';
+        //var ip = 'localhost';
+        $(document).ready(function () {
+        $('#formB').bind('submit', function() {
+            if( $('#formB')[0].checkValidity())
+            {
+            if($('#formType').val() =='reg')
+                    register();
+                else
+                    doneEdit();
+            }
+            return false;
+        });
+
+        jQuery.fn.setfocus = function()
+        {
+            return this.each(function()
+            {
+                var dom = this;
+                setTimeout(function()
+                {
+                    try { dom.focus(); } catch (e) { }
+                }, 0);
+            });
+        };
+        });
+    </script>
+    <script src="scripts/index.js"></script>
+    <script src="scripts/regions.js"></script>
+    <script src="scripts/date.js"></script>
+    <script src="scripts/checkMember.js"></script>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/register.js"></script>
+    <script src="scripts/getMagazine.js"></script>
+    <script src="scripts/memberInfoUpdate.js"></script>
+    <script src="alertifyjs/alertify.min.js"></script>
+</head>
+
+<body onload="addOptions(), getDateList()" class="bg">
+            <div class="container">
+
+                <div class="phone-verif" id="phone-verif">
+                    <div class="logo-div" id="logo">
+                        <img src="images/log-02.png" class="logoimg" />
+                    </div>
+                    <form autocomplete="off" class="formA" id="formA" name="formA">
+                        <h3 id="index-label">登入會員即可免費索取雜誌</h3>
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" id="phone" name="phone" onkeyup="return isNumberKey(event)" maxlength="10" placeholder="請輸入手機號碼" required/>
+                                <button type="button" class="send-ver" id="send-ver" onclick="sendSmsCode('a')" disabled>發送驗證碼</button>
+                                <img src="images/checkMark.png" class="checkMark" id="checkMark" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="text" id="verificate" name="verificate" placeholder="請輸入驗證碼" required/>
+                                <img src="images/cross.png" class="cross" id="cross" />
+                            </div>
+                        </div>
+
+                        <button type="button" class="submit" id="submit" onclick="login()" disabled>登入</button>
+                        <div class="forma-a">
+                            <a onclick="displayNeeded('signUp')" id="atag">尚未成為會員？</a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="register" id="register">
+                    <div class="logo-div" id="logo">
+                        <img src="images/log-02.png" class="logoimg" id="logoimg" />
+                    </div>
+                    <form autocomplete="off" class="formB" id="formB" name="formB">
+                        <div class="head" id="login-failed">
+                            <h3>填寫基本資料即可索取雜誌！</h3>
+                        </div>
+                        <div class="head" id="login-success">
+                            <h2>登入成功</h2>
+                            <button type="button" class="btn-update" id="btn-update" onclick="edit()">修改</button>
+                            <button type="submit" class="btn-save" id="btn-save" onclick="$('#formType').val('save');">儲存</button>
+                        </div>
+
+                        <div class="info">
+                            <div id="details">
+                                <div class="info-details-first-div">
+                                    <input type="text" class="sip" id="sendinPhone" name="sendinPhone" maxlength="10" onblur="checkPhoneExist()" placeholder="請輸入手機號碼" required/>
+                                    <button type="button" class="enableSend" id="sec-send-ver" onclick="sendSmsCode('b')">發送驗證碼</button>
+                                </div>
+
+                                <input type="text" class="siv" id="sendinVerif" name="sendinVerif" placeholder="請輸入驗證碼" required />
+                                <input type="text" class="name" id="name" name="name" placeholder="請輸入姓名" required />
+                                <input type="email" class="email" id="email" name="mail" placeholder="請輸入信箱" required />
+
+                                <!--  Bday -->
+                                <div class="row bday">
+                                    <div class="col-xs-4">
+                                        <select class="select-style" id="year" required>
+                                            <option selected disabled value="" >生日年</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <select class="select-style" id="month" onchange="clearDate()" required>
+                                            <option selected disabled value="">月</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <select class="select-style" id="date" required>
+                                            <option selected disabled value="">日</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr class="bday-hr" />
+
+                                <!-- districts -->
+                                <div class="row">
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <select class="select-style" id="countries" onchange="clearOptions()" required></select>
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                        <select class="select-style" id="districts" required></select>
+                                    </div>
+                                </div>
+
+                                <input type="text" class="address" id="address" name="address" placeholder="詳細地址" required />
+                                <input type="hidden" id="hidden" disabled />
+                            </div>
+                            <input type="hidden" id="formType"/>
+                            <input type="submit" class="submit-register" id="submit-register" value="註冊" onclick="$('#formType').val('reg');" />
+
+                            <p id="last-modified"></p>
+                            <button type="button" class="submit-getMaga" id="submit-getMaga" value="索取車主雜誌" onclick="getMagazine()" />
+                        </div>
+                    </form>
+                </div>
+
+                <div class="attention" id="attention-div">
+                    <hr id="attention-hr" />
+                    <h4>注意事項</h4>
+                    <p>1.驗證碼每 24 小時內僅限重複發送 5 次。
+                        <br/>2.每名會員每個月限領取一本雜誌，不得重覆領取。
+                        <br/>3.索取時間 : 每個月 21 號 00:00:00 ~ 下個月 20 號 23:59:59。
+                        <br/>4.索取的雜誌期數皆為下一期雜誌。
+                        <br/>例 : 8/21 00:00:00 ~ 9/20 23:59:59 這段期間登入之會員，可索取的雜誌號為十月號。
+                        <br/>9/21 00:00:00 ~ 10/20 23:59:59 這段期間登入之會員，可索取的雜誌號為十一月號。
+                        <br/>5.寄送資料以每個月 21 日 12:00:00 所撈取之會員資料為主。
+                        <br/>6.車主雜誌官方人員保留對本網站、索取規則、時間等的修改權利, 修改後將於本網頁中更新，恕不另行通知，不遵守索取規定者將不具贈送資格。其他未盡事宜，悉依中華民國相關法令辦理。
+                        <br/>7.如有任何因電腦、網路、電話、技術或不可歸責於主辦單位之事由，而因會員所登錄之資料有遲延、遺失、錯誤、無法辨識或毀損之情況時，主辦單位不負任何法律責任，會員亦不得因此提出異議。
+                        <br/>8.贈送之書籍不接受退換貨，若介意者，請勿索取!
+                        <br/>9.若有任何問題，請撥打服務專線:(02) 2656-1234，我們將有專人為您服務。
+                    </p>
+                </div>
+            </div>
+
+</body>
+
+</html>

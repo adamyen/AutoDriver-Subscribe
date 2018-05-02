@@ -1,0 +1,371 @@
+﻿html {
+	height: 100%;
+}
+
+body {
+    background-image: url("images/A_1.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
+
+.bg-center {
+	display: block;
+    margin: auto;
+}
+
+.bg-fit {
+	max-width: 100%;
+    max-height: 100%;
+}
+
+.logo-div {
+    margin-top: 15px;
+    display: block;
+    text-align: center;
+}
+
+/* image */
+
+.logoimg {
+    height: 150px;
+    width: 150px;
+}
+
+@media (max-width: 320px){
+.logoimg {
+    height: 120px;
+    width: 120px;
+}}
+
+img {
+    height: 70px;
+    width: 70px;
+}
+
+.checkMark {
+	display: none;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 2px;
+	right: 123px;
+}
+
+.cross {
+	display: none;
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 8px;
+    right: 25px;
+}
+
+/* form */
+
+@media (min-width: 750px){
+.formA {
+    margin: 0 auto;
+    width: 600px;
+}}
+
+.forma-a{
+    float: right;
+    padding: 10px;
+}
+
+.forma-a a {
+    color: #ffffff;
+}
+
+@media (min-width: 750px){
+.formB {
+    margin: 0 auto;
+    width: 600px;
+}}
+
+@media (min-width: 750px){
+.attention {
+    margin: 0 auto;
+    width: 600px;
+}}
+
+.attention h4 {
+    margin-top: 13px;
+}
+
+.phone-verif {
+    display: block;
+}
+
+.register {
+    display: none;
+}
+
+.register p {
+    text-align: center;
+    color: #A9A9A9;
+}
+
+h3 {
+    color: #F8F8FF !important;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+h4, h6 {
+    color: #F8F8FF !important;
+}
+
+p {
+    font-size: small;
+    color: #F8F8FF;
+    line-height: 30px;
+}
+
+.head {
+    text-align: center;
+}
+
+.head h2 {
+    color: #FFFFFF;
+}
+
+.head h3 {
+    color: #F8F8FF !important;
+    letter-spacing: 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.head h4 {
+    color: #F8F8FF !important;
+    letter-spacing: 2px;
+}
+
+.disableMouse {
+    pointer-events: none;
+}
+
+/* Inputs */
+
+input[type=number], input[type=text], input[type=email] {
+    outline: none;
+    display: block;
+    background: transparent;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 0.5px solid white;
+    color: #FFFFFF;
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+}
+
+.errInput {
+	outline: none;
+    display: block;
+    background: transparent;
+    border-radius: 0px;
+    border: none;
+    border-bottom: 0.5px solid #e80d47;
+    color: #FFFFFF;
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 8px;
+    box-sizing: border-box;
+}
+
+/* Placeholders */
+
+input[type=text]::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #999999;
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+input[type=number]::-webkit-input-placeholder {
+    color: #999999;
+    text-align: left;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #999999;
+   text-align: left;
+   font-size: 17px;
+   letter-spacing: 2px;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #999999;
+   text-align: left;
+   font-size: 17px;
+   letter-spacing: 2px;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #999999;
+   text-align: left;
+   font-size: 17px;
+   letter-spacing: 2px;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color: #999999;
+   text-align: left;
+   font-size: 17px;
+   letter-spacing: 2px;
+}
+
+input[type=email]::-webkit-input-placeholder {
+    color: #999999;
+    text-align: left;
+    letter-spacing: 2px;
+}
+
+/* Select */
+
+select {
+   text-align: center;
+   text-align-last: center;
+}
+
+.select-style {
+    border: none;
+    outline: 0;
+    width: 100%;
+    background: transparent;
+    color: #FFFFFF;
+}
+
+.select-style option {
+    color: black;
+}
+
+.select-style select:focus {
+    outline: none;
+}
+
+/* Buttons */
+
+.submit {
+    width: 100%;
+    padding: 9px 20px;
+    border: 1px solid #F5F5F5;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 3px;
+    color: #A9A9A9;
+    font-size: 17px;
+    letter-spacing: 2px;
+}
+
+.enable {
+    width: 100%;
+    padding: 9px 20px;
+	border: 1px solid #ffffff;
+    background-color: #19A3FF;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 17px;
+    letter-spacing: 2px;
+}
+
+.send-ver {
+    margin-top: -56px;
+    float:right;
+    outline: none;
+    background-color: rgb(48,48,48);
+    border: 1px solid #F5F5F5;
+    border-radius: 3px;
+    color: #A9A9A9;
+    letter-spacing: 1px;
+    padding: 6px 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.enableSend {
+	margin-top: -56px;
+    float:right;
+    outline: none;
+    background-color: #19A3FF;
+	opacity: 1;
+    border: 1px solid #19A3FF;
+    border-radius: 3px;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    padding: 6px 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+.submit-register, .submit-getMaga {
+    width: 100%;
+    background-color: #19A3FF;
+    border: 1px solid #19A3FF;
+    color: #FFFFFF;
+    letter-spacing: 2px;
+    padding: 8px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 19px;
+    border-radius: 3px;
+}
+
+.disable-getMagazine {
+	width: 100%;
+	border: 1px solid #FFFFFF;
+    background-color: rgba(0, 0, 0, 0.7);
+	color: #A9A9A9;
+	letter-spacing: 2px;
+    padding: 8px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 19px;
+    border-radius: 3px;
+
+}
+
+.btn-update {
+    display: block;
+    margin: 0px auto;
+    background-color: #19A3FF;
+    border: 1px solid #19A3FF;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 3px 5px;
+}
+
+.btn-save {
+    display: block;
+    margin: 0px auto;
+    background-color: #19A3FF;
+    border: 1px solid #19A3FF;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: 14px;
+    padding: 3px 5px;
+}
+
+/* info-details-first-div */
+.info-details-first-div {
+    margin-top: 25px;
+}
+
+/* bday */
+
+.bday {
+    margin-top: 24px;
+    margin-bottom: 5px;
+}
+
+/* hr */
+
+.bday-hr {
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
